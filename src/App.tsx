@@ -12,7 +12,7 @@ const QUESTIONS = [
       "Trận Điện Biên Phủ năm 1954."
     ],
     correctAnswer: "Trận tập kích đồn Pháp tại Cần Giuộc năm 1861.",
-    explanation: "Trận tập kích đồn Pháp tại Cần Giuộc năm 1861."
+    explanation: "Giải thích á hả"
   },
   {
     question: "Bố cục: Một bài văn tế cổ điển (như tác phẩm này) thường gồm mấy phần?",
@@ -23,10 +23,10 @@ const QUESTIONS = [
       "5 phần (Khai, Thừa, Chuyển, Hợp, Kết)."
     ],
     correctAnswer: "4 phần (Lung khởi, Thích thực, Ai vãn, Kết).",
-    explanation: "4 phần (Lung khởi, Thích thực, Ai vãn, Kết)."
+    explanation: "Lung khởi: cảm tưởng khái quát về người chết.\nThích thực: hồi tưởng công đức của người chết.\nAi vãn: than tiếc người chết.\nKết: nêu lên ý nghĩa và lời mời của người đứng tế đối với linh hồn của người chết."
   },
   {
-    question: "Ý nghĩa phần Lung khởi: Hai câu đầu (\"Súng giặc đất rền\" / \"Lòng dân trời tỏ\") khẳng định điều gì?",
+    question: "Ý nghĩa phần Lung khởi: Hai câu đầu (Súng giặc đất rền / Lòng dân trời tỏ) khẳng định điều gì?",
     options: [
       "Sự thất bại không thể tránh khỏi của nghĩa quân Cần Giuộc.",
       "Khẳng định chính nghĩa sáng ngời của dân ta đối lập với sức mạnh bạo tàn của giặc.",
@@ -34,29 +34,29 @@ const QUESTIONS = [
       "Miêu tả khung cảnh thiên nhiên hoang tàn sau trận chiến."
     ],
     correctAnswer: "Khẳng định chính nghĩa sáng ngời của dân ta đối lập với sức mạnh bạo tàn của giặc.",
-    explanation: "Khẳng định chính nghĩa sáng ngời của dân ta đối lập với sức mạnh bạo tàn của giặc."
+    explanation: "Súng giặc nố vang trời, tình yêu nước của nhân dân có trời xanh làm chứng."
   },
   {
     question: "Xuất thân: Trước khi cầm súng đánh giặc, những người anh hùng này là ai?",
     options: [
       "Những sĩ phu yêu nước giàu có.",
       "Những người quan lại trong triều đình.",
-      "Những người nông dân nghèo khổ, \"cui cút làm ăn\".",
+      "Những người nông dân nghèo khổ, cui cút làm ăn.",
       "Những lính đánh thuê thiện chiến."
     ],
-    correctAnswer: "Những người nông dân nghèo khổ, \"cui cút làm ăn\".",
-    explanation: "Những người nông dân nghèo khổ, \"cui cút làm ăn\"."
+    correctAnswer: "Những người nông dân nghèo khổ, cui cút làm ăn.",
+    explanation: "Khẳng định tinh thần đầu tranh."
   },
   {
     question: "Kỹ năng binh nghiệp: Thái độ của họ đối với việc binh đao trước khi giặc đến như thế nào?",
     options: [
-      "Hoàn toàn xa lạ (\"Chưa quen cung ngựa, đâu tới trường nhung\").",
+      "Chưa có kinh nghiệm chiến đấu, hoàn toàn xa lạ với vũ khí.",
       "Rất tinh thông và luôn sẵn sàng.",
       "Từng được rèn luyện quân sự quy củ từ nhỏ.",
       "Đã có kinh nghiệm sau nhiều trận chiến lớn."
     ],
-    correctAnswer: "Hoàn toàn xa lạ (\"Chưa quen cung ngựa, đâu tới trường nhung\").",
-    explanation: "Hoàn toàn xa lạ (\"Chưa quen cung ngựa, đâu tới trường nhung\")."
+    correctAnswer: "Hoàn toàn xa lạ (Chưa quen cung ngựa, đâu tới trường nhung).",
+    explanation: "Chỉ biết ruộng trâu, ở trong làng bộ."
   },
   {
     question: "Vũ khí trang bị: Những vật dụng nào được họ dùng làm vũ khí khi ra trận?",
@@ -67,21 +67,21 @@ const QUESTIONS = [
       "Cung tên và giáo mác."
     ],
     correctAnswer: "Ngọn tầm vông, dao phay, rơm con cúi.",
-    explanation: "Ngọn tầm vông, dao phay, rơm con cúi."
+    explanation: "Dân ta thiếu thốn đủ điều nhưng đấu tranh bằng cả tình yêu đất nước."
   },
   {
     question: "Động lực chiến đấu: Tại sao họ lại tự nguyện đứng lên đánh Pháp?",
     options: [
       "Bị quan lại triều đình bắt ép.",
-      "Do lòng yêu nước, căm thù giặc và ý thức trách nhiệm (\"mến nghĩa làm quân chiêu mộ\").",
+      "Do lòng yêu nước, căm thù giặc và ý thức trách nhiệm.",
       "Muốn lập công để được ban thưởng.",
       "Không còn nơi nào khác để đi."
     ],
-    correctAnswer: "Do lòng yêu nước, căm thù giặc và ý thức trách nhiệm (\"mến nghĩa làm quân chiêu mộ\").",
-    explanation: "Do lòng yêu nước, căm thù giặc và ý thức trách nhiệm (\"mến nghĩa làm quân chiêu mộ\")."
+    correctAnswer: "Do lòng yêu nước, căm thù giặc và ý thức trách nhiệm.",
+    explanation: "Ý thức trách nhiệm ở đây là mến nghĩa làm quân chiêu mộ."
   },
   {
-    question: "Vẻ đẹp hình tượng: Tại sao hình tượng nghĩa sĩ trong bài mang vẻ đẹp \"bi tráng\"?",
+    question: "Vẻ đẹp hình tượng: Tại sao hình tượng nghĩa sĩ trong bài mang vẻ đẹp bi tráng?",
     options: [
       "Vì họ ra trận mang theo sự u buồn, tuyệt vọng.",
       "Vì họ chiến đấu ngoan cường nhưng vẫn oán trách số phận.",
@@ -106,9 +106,9 @@ const QUESTIONS = [
     question: "Nội dung phần Ai vãn: Đoạn văn này tập trung thể hiện cảm xúc gì?",
     options: [
       "Niềm tiếc thương vô hạn của tác giả và nhân dân trước sự hy sinh của các nghĩa sĩ.",
-      "Sự vui mừng sau khi kẻ thù rút lui.",
-      "Sự giận dữ trách móc triều đình không gửi viện binh.",
-      "Lời khích lệ tinh thần người dân tiếp tục chiến đấu."
+      "Sự vui mừng của người dân khi kẻ thù bại trận và rút lui",
+      "Sự giận dữ, trách móc, oán thán triều đình vô dụng không gửi viện binh",
+      "Lời khích lệ ý chí , tinh thần người dân tiếp tục chiến đấu "
     ],
     correctAnswer: "Niềm tiếc thương vô hạn của tác giả và nhân dân trước sự hy sinh của các nghĩa sĩ.",
     explanation: "Niềm tiếc thương vô hạn của tác giả và nhân dân trước sự hy sinh của các nghĩa sĩ."
@@ -138,27 +138,27 @@ const QUESTIONS = [
   {
     question: "Quan niệm sống chết: Câu văn nào khẳng định sự lựa chọn cái chết vinh quang của nghĩa sĩ?",
     options: [
-      "\"Mắt chưa từng ngó, tai chưa từng nghe\".",
-      "\"Thà thác mà đặng câu địch khái, về theo tổ phụ cũng vinh\".",
-      "\"Bữa thấy bòng bong che trắng lốp\".",
-      "\"Sống làm chi theo quân tả đạo, quăng vác đi cho nhọc\"."
+      "Mắt chưa từng ngó, tai chưa từng nghe.",
+      "Thà thác mà đặng câu địch khái, về theo tổ phụ cũng vinh.",
+      "Bữa thấy bòng bong che trắng lốp.",
+      "Sống làm chi theo quân tả đạo, quăng vác đi cho nhọc."
     ],
-    correctAnswer: "\"Thà thác mà đặng câu địch khái, về theo tổ phụ cũng vinh\".",
-    explanation: "\"Thà thác mà đặng câu địch khái, về theo tổ phụ cũng vinh\"."
+    correctAnswer: "Thà thác mà đặng câu địch khái, về theo tổ phụ cũng vinh.",
+    explanation: "Thà chết mà có tinh thần, ý chí chống kẻ thù, về gặp tổ tiên cũng vinh quang, còn hơn cuộc sống làm nô lệ cho thực dân Pháp."
   },
   {
     question: "Thái độ với kẻ thù: Tác giả dùng những từ ngữ nào để thể hiện sự khinh bỉ quân xâm lược?",
     options: [
-      "\"Mùi tinh chiên\", \"đồ tả đạo\", \"thằng hè\".",
-      "\"Quân viễn chinh\", \"khách phương xa\".",
-      "\"Thực dân\", \"kẻ thù đáng kính\".",
-      "\"Người lính ngoại quốc\"."
+      "Mùi tinh chiên, đồ tả đạo, thằng hè.",
+      "Quân viễn chinh, khách phương xa.",
+      "Thực dân, kẻ thù đáng kính.",
+      "Người lính ngoại quốc."
     ],
-    correctAnswer: "\"Mùi tinh chiên\", \"đồ tả đạo\", \"thằng hè\".",
-    explanation: "\"Mùi tinh chiên\", \"đồ tả đạo\", \"thằng hè\"."
+    correctAnswer: "Mùi tinh chiên, đồ tả đạo, thằng hè.",
+    explanation: "Mùi tinh chiên: chỉ mùi hôi tanh nồng nặc.\nTả đạo: có nghĩa là tà đạo, đạo sai trái, không chính thống.\n=> Ý chỉ miệt thị, thù ghét quân Pháp."
   },
   {
-    question: "Giá trị lịch sử văn học: Bài văn này được coi là \"tượng đài\" gì trong văn học Việt Nam?",
+    question: "Giá trị lịch sử văn học: Bài văn này được coi là tượng đài gì trong văn học Việt Nam?",
     options: [
       "Tượng đài về lòng trung quân ái quốc của giới sĩ phu.",
       "Tượng đài bất hủ về vẻ đẹp tráng lệ của thiên nhiên Nam Bộ.",
@@ -247,7 +247,7 @@ export default function App() {
           <p className="font-serif text-sm tracking-widest opacity-70 uppercase mb-8">Nguyễn Đình Chiểu • 1861</p>
           <div className="w-16 h-[1px] bg-ink/20 mx-auto mb-8"></div>
           <p className="text-ink/80 mb-10 leading-relaxed font-medium">
-            Trò chơi trắc nghiệm tìm hiểu về tác phẩm văn học mang đậm triết lý bi tráng của nhân dân Nam Bộ. Bài thi gồm 8 câu hỏi.
+            Trò chơi trắc nghiệm gồm 8 câu hỏi tìm hiểu về tác phẩm văn học mang đậm triết lý bi tráng của nhân dân Nam Bộ.
           </p>
           <button
             onClick={startGame}
@@ -333,7 +333,7 @@ export default function App() {
                  </div>
                  
                  <h3 className="font-serif text-xl sm:text-2xl font-bold uppercase tracking-[0.2em] mb-8 text-ink">
-                   Bằng Khen Ngợi
+                   Bằng Khen
                  </h3>
                  
                  <p className="font-serif text-ink opacity-70 italic mb-2 text-sm sm:text-base">Trân trọng cáo thị cho bá tánh biết:</p>
@@ -507,7 +507,7 @@ export default function App() {
                   <><X className="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" /> Chưa chính xác</>
                 )}
               </h3>
-              <p className="text-[13px] lg:text-sm leading-relaxed text-ink/90 font-medium">
+              <p className="text-[13px] lg:text-sm leading-relaxed text-ink/90 font-medium whitespace-pre-line">
                 {currentQ.explanation}
               </p>
             </div>
