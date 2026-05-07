@@ -1,5 +1,6 @@
-import { useState, useMemo } from 'react';
-import { Check, X, ArrowRight, RotateCcw } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Check, X, ArrowRight, RotateCcw, Download } from 'lucide-react';
+import html2canvas from 'html2canvas';
 
 const QUESTIONS = [
   {
@@ -177,6 +178,27 @@ export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState(0);
+  
+  const [playerName, setPlayerName] = useState('');
+  const [showBadge, setShowBadge] = useState(false);
+  const badgeRef = useRef<HTMLDivElement>(null);
+
+  const downloadBadge = async () => {
+    if (!badgeRef.current) return;
+    try {
+      const canvas = await html2canvas(badgeRef.current, {
+        scale: 2,
+        backgroundColor: '#FDFBF7',
+      });
+      const image = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = image;
+      link.download = `Danh_Hieu_Can_Giuoc_${playerName.replace(/\s+/g, '_')}.png`;
+      link.click();
+    } catch (error) {
+      console.error('Error generating image', error);
+    }
+  };
 
   const startGame = () => {
     // Shuffle options for all questions
@@ -192,6 +214,8 @@ export default function App() {
     setCurrentIndex(0);
     setScore(0);
     setSelectedOption(null);
+    setPlayerName('');
+    setShowBadge(false);
     setGameState('PLAYING');
   };
 
@@ -238,36 +262,120 @@ export default function App() {
 
   if (gameState === 'RESULT') {
     const wrongCount = selectedQuestions.length - score;
-    return (
-      <div className="h-screen flex flex-col items-center justify-center p-6 font-sans text-ink relative">
-        <div className="max-w-xl w-full classic-card p-10 text-center m-2 shadow-woodblock relative z-10">
-          <div className="flex justify-center mb-6 text-crimson space-x-2">
-            <span className="text-2xl opacity-80">❖</span>
-          </div>
-          <h2 className="font-serif text-3xl font-bold mb-8 text-ink">Kết Quả Binh Tình</h2>
-          
-          <div className="flex justify-center flex-wrap gap-8 mb-10">
-             <div className="border-[1.5px] border-ink bg-[#FDFBF7] rounded-sm p-6 min-w-[120px] shadow-[3px_3px_0_0_#2B593F]">
-              <div className="font-serif text-[10px] uppercase opacity-80 text-moss font-bold mb-2 tracking-widest">Đúng</div>
-              <div className="font-serif text-5xl font-bold text-ink">{score}</div>
-            </div>
-            <div className="border-[1.5px] border-ink bg-[#FDFBF7] rounded-sm p-6 min-w-[120px] shadow-[3px_3px_0_0_#8C2111]">
-              <div className="font-serif text-[10px] uppercase opacity-80 text-crimson font-bold mb-2 tracking-widest">Sai</div>
-              <div className="font-serif text-5xl font-bold text-ink">{wrongCount}</div>
-            </div>
-          </div>
-          
-          <p className="text-ink/80 mb-10 font-serif italic">
-            Bạn đã hoàn thành với kết quả {score}/{selectedQuestions.length} câu chính xác.
-          </p>
+    const getTitle = (s: number) => {
+      if (s === 8) return "Đại Tướng Cần Giuộc";
+      if (s >= 6) return "Nghĩa Sĩ Uy Dũng";
+      if (s >= 4) return "Dân Binh Quả Cảm";
+      return "Tân Binh Tập Sự";
+    };
 
-          <button
-            onClick={startGame}
-            className="flex items-center justify-center space-x-2 w-full sm:w-auto mx-auto bg-ink text-paper font-semibold py-3 px-8 border border-ink hover:bg-ink/90 shadow-[2px_2px_0_0_#8C2111] transition-all uppercase tracking-widest text-sm"
-          >
-            <RotateCcw className="w-4 h-4" />
-            <span>Chơi Lại</span>
-          </button>
+    return (
+      <div className="h-screen flex flex-col items-center justify-center p-6 font-sans text-ink relative overflow-y-auto w-full">
+        <div className="max-w-xl w-full classic-card p-6 lg:p-10 text-center m-2 shadow-woodblock relative z-10 flex flex-col items-center my-auto">
+          {!showBadge ? (
+            <>
+              <div className="flex justify-center mb-6 text-crimson space-x-2">
+                <span className="text-2xl opacity-80">❖</span>
+              </div>
+              <h2 className="font-serif text-3xl font-bold mb-8 text-ink">Kết Quả Binh Tình</h2>
+              
+              <div className="flex justify-center flex-wrap gap-4 sm:gap-8 mb-8 w-full">
+                 <div className="border-[1.5px] border-ink bg-[#FDFBF7] rounded-sm p-6 flex-1 min-w-[120px] shadow-[3px_3px_0_0_#2B593F]">
+                  <div className="font-serif text-[10px] uppercase opacity-80 text-moss font-bold mb-2 tracking-widest">Đúng</div>
+                  <div className="font-serif text-4xl font-bold text-ink">{score}</div>
+                </div>
+                <div className="border-[1.5px] border-ink bg-[#FDFBF7] rounded-sm p-6 flex-1 min-w-[120px] shadow-[3px_3px_0_0_#8C2111]">
+                  <div className="font-serif text-[10px] uppercase opacity-80 text-crimson font-bold mb-2 tracking-widest">Sai</div>
+                  <div className="font-serif text-4xl font-bold text-ink">{wrongCount}</div>
+                </div>
+              </div>
+              
+              <div className="w-full mb-8 bg-[#F0EDE4] p-6 border-[1.5px] border-ink shadow-[2px_2px_0_0_#3D3935] rounded-sm">
+                <p className="text-sm font-bold mb-4 uppercase tracking-widest text-ink/80 flex items-center justify-center font-serif">
+                   <span className="opacity-50 mr-2">~</span> Lưu danh sử sách <span className="opacity-50 ml-2">~</span>
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="text"
+                    placeholder="Nhập tên của bạn..."
+                    value={playerName}
+                    onChange={(e) => setPlayerName(e.target.value)}
+                    className="flex-1 bg-white border-2 border-ink px-4 py-3 rounded-sm font-serif focus:outline-none focus:border-moss transition-colors text-center sm:text-left"
+                  />
+                  <button
+                    onClick={() => playerName.trim() && setShowBadge(true)}
+                    disabled={!playerName.trim()}
+                    className="bg-moss text-paper font-semibold py-3 px-6 border border-ink hover:bg-moss/90 shadow-[2px_2px_0_0_#2B593F] transition-all uppercase tracking-widest text-sm disabled:opacity-50 disabled:shadow-none whitespace-nowrap disabled:cursor-not-allowed"
+                  >
+                    Tạo Danh Hiệu
+                  </button>
+                </div>
+              </div>
+
+              <button
+                onClick={startGame}
+                className="flex items-center justify-center space-x-2 w-full sm:w-auto mx-auto bg-ink text-paper font-semibold py-3 px-8 border border-ink hover:bg-ink/90 shadow-[2px_2px_0_0_#8C2111] transition-all uppercase tracking-widest text-sm"
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>Chơi Lại Trận Mới</span>
+              </button>
+            </>
+          ) : (
+            <div className="w-full flex justify-center items-center flex-col animate-in zoom-in-95 duration-500">
+              <div ref={badgeRef} className="w-full border-[6px] border-double border-ink bg-[#FDFBF7] p-8 sm:p-12 text-center mb-8 relative shadow-[4px_4px_0_0_#8C2111]">
+                 <div className="absolute top-4 left-4 text-3xl opacity-20 hidden sm:block">❖</div>
+                 <div className="absolute top-4 right-4 text-3xl opacity-20 hidden sm:block">❖</div>
+                 <div className="absolute bottom-4 left-4 text-3xl opacity-20 hidden sm:block">❖</div>
+                 <div className="absolute bottom-4 right-4 text-3xl opacity-20 hidden sm:block">❖</div>
+                 
+                 <div className="mb-4 flex justify-center">
+                    <span className="text-[2.5rem] text-crimson opacity-80 leading-none">印</span>
+                 </div>
+                 
+                 <h3 className="font-serif text-xl sm:text-2xl font-bold uppercase tracking-[0.2em] mb-8 text-ink">
+                   Bằng Khen Ngợi
+                 </h3>
+                 
+                 <p className="font-serif text-ink opacity-70 italic mb-2 text-sm sm:text-base">Trân trọng cáo thị cho bá tánh biết:</p>
+                 <h4 className="font-serif text-3xl sm:text-4xl text-moss font-bold mb-6 break-words px-2">{playerName}</h4>
+                 
+                 <div className="w-24 h-[1.5px] bg-ink opacity-20 mx-auto mb-6"></div>
+                 
+                 <p className="font-serif text-sm sm:text-base leading-relaxed mb-8 text-ink opacity-90">
+                   Đã thành công vượt qua tiểu khảo về tác phẩm<br/>
+                   <strong className="font-bold text-base sm:text-lg mt-2 inline-block">Văn tế Nghĩa sĩ Cần Giuộc</strong>
+                 </p>
+                 
+                 <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                   <div className="border border-ink p-4 min-w-[140px] bg-white w-full sm:w-auto shadow-[2px_2px_0_0_#3D3935]">
+                     <p className="font-serif text-[10px] uppercase font-bold tracking-widest opacity-60 mb-2">Thành Tích</p>
+                     <p className="font-serif text-2xl font-bold text-ink">{score} / {selectedQuestions.length}</p>
+                   </div>
+                   <div className="border border-ink p-4 min-w-[140px] bg-white w-full sm:w-auto shadow-[2px_2px_0_0_#3D3935]">
+                     <p className="font-serif text-[10px] uppercase font-bold tracking-widest opacity-60 mb-2">Phong Cấp</p>
+                     <p className="font-serif text-lg font-bold text-crimson pt-[2px]">{getTitle(score)}</p>
+                   </div>
+                 </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
+                <button
+                  onClick={downloadBadge}
+                  className="flex-1 flex items-center justify-center space-x-2 bg-moss text-paper font-semibold py-3 px-6 border border-ink hover:bg-moss/90 shadow-[2px_2px_0_0_#2B593F] transition-all uppercase tracking-widest text-sm"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Tải Ảnh Bằng Khen</span>
+                </button>
+                <button
+                  onClick={startGame}
+                  className="flex-1 flex items-center justify-center space-x-2 bg-white text-ink font-semibold py-3 px-6 border border-ink hover:bg-black/5 shadow-[2px_2px_0_0_#8C2111] transition-all uppercase tracking-widest text-sm"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                  <span>Thử Thách Lại</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
