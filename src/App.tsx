@@ -55,7 +55,7 @@ const QUESTIONS = [
       "Từng được rèn luyện quân sự quy củ từ nhỏ.",
       "Đã có kinh nghiệm sau nhiều trận chiến lớn."
     ],
-    correctAnswer: "Hoàn toàn xa lạ (Chưa quen cung ngựa, đâu tới trường nhung).",
+    correctAnswer: "Chưa có kinh nghiệm chiến đấu, hoàn toàn xa lạ với vũ khí.",
     explanation: "Chỉ biết ruộng trâu, ở trong làng bộ."
   },
   {
@@ -222,7 +222,7 @@ export default function App() {
   const handleSelect = (option: string) => {
     if (selectedOption) return; // Prevent double clicking
     setSelectedOption(option);
-    if (option === selectedQuestions[currentIndex].correctAnswer) {
+    if (option.trim() === (selectedQuestions[currentIndex].correctAnswer || "").trim()) {
       setScore(s => s + 1);
     }
   };
@@ -428,8 +428,8 @@ export default function App() {
 
           <div className="grid gap-4 mt-auto lg:mt-0 pb-4">
             {currentQ.options.map((option, idx) => {
-              const isSelected = selectedOption === option;
-              const isCorrect = option === currentQ.correctAnswer;
+              const isSelected = selectedOption?.trim() === option.trim();
+              const isCorrect = option.trim() === currentQ.correctAnswer.trim();
               
               let buttonStyles = "border border-ink-light bg-[#FDFBF7] hover:border-ink hover:bg-ink/5 text-ink/80 rounded-sm";
               let letterStyles = "border-2 border-crimson/30 text-crimson/50 font-serif font-bold rounded-sm";
@@ -500,8 +500,8 @@ export default function App() {
         <aside className={`lg:col-span-4 bg-[#F0EDE4] lg:border-l-[1.5px] border-ink p-4 lg:p-8 flex-col flex-shrink-0 overflow-y-auto ${!isAnswered ? 'hidden lg:flex' : 'flex'}`}>
           {isAnswered ? (
             <div className="bg-[#FDFBF7] border-[1.5px] text-ink border-ink p-4 lg:p-6 rounded-sm shadow-woodblock mb-4 lg:mb-6 animate-in fade-in slide-in-from-right-4 duration-300">
-              <h3 className={`font-serif text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-2 lg:mb-4 flex items-center ${selectedOption === currentQ.correctAnswer ? 'text-moss' : 'text-crimson'}`}>
-                {selectedOption === currentQ.correctAnswer ? (
+              <h3 className={`font-serif text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-2 lg:mb-4 flex items-center ${selectedOption?.trim() === currentQ.correctAnswer?.trim() ? 'text-moss' : 'text-crimson'}`}>
+                {selectedOption?.trim() === currentQ.correctAnswer?.trim() ? (
                   <><Check className="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" /> Trả lời đúng</>
                 ) : (
                   <><X className="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" /> Chưa chính xác</>
