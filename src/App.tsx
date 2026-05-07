@@ -214,16 +214,20 @@ export default function App() {
 
   if (gameState === 'START') {
     return (
-      <div className="h-screen bg-paper flex flex-col items-center justify-center p-4 font-sans text-ink">
-        <div className="max-w-xl w-full bg-white rounded-xl shadow-card border border-ink-light p-10 text-center">
+      <div className="h-screen flex flex-col items-center justify-center p-6 font-sans text-ink relative">
+        <div className="max-w-xl w-full classic-card p-10 text-center m-2 shadow-woodblock relative z-10">
+          <div className="flex justify-center mb-6 text-crimson space-x-2">
+            <span className="text-2xl opacity-80">❖</span>
+          </div>
           <h1 className="font-serif text-3xl font-bold mb-4 text-ink">Văn tế Nghĩa sĩ Cần Giuộc</h1>
-          <p className="text-sm tracking-widest opacity-70 uppercase mb-8">Nguyễn Đình Chiểu • 1861</p>
-          <p className="text-ink/80 mb-8 leading-relaxed">
-            Trò chơi trắc nghiệm tìm hiểu về tác phẩm văn học nổi tiếng của nhà thơ Nguyễn Đình Chiểu. Bài thi gồm 8 câu hỏi ngẫu nhiên.
+          <p className="font-serif text-sm tracking-widest opacity-70 uppercase mb-8">Nguyễn Đình Chiểu • 1861</p>
+          <div className="w-16 h-[1px] bg-ink/20 mx-auto mb-8"></div>
+          <p className="text-ink/80 mb-10 leading-relaxed font-medium">
+            Trò chơi trắc nghiệm tìm hiểu về tác phẩm văn học mang đậm triết lý bi tráng của nhân dân Nam Bộ. Bài thi gồm 8 câu hỏi.
           </p>
           <button
             onClick={startGame}
-            className="w-full sm:w-auto bg-olive text-white font-semibold py-3 px-8 rounded hover:opacity-90 uppercase tracking-widest transition-opacity"
+            className="w-full sm:w-auto bg-ink text-paper font-semibold py-3 px-10 border border-ink hover:bg-ink/90 shadow-[2px_2px_0_0_#8C2111] uppercase tracking-widest transition-all"
           >
             Bắt Đầu Chơi
           </button>
@@ -235,28 +239,31 @@ export default function App() {
   if (gameState === 'RESULT') {
     const wrongCount = selectedQuestions.length - score;
     return (
-      <div className="h-screen bg-paper flex flex-col items-center justify-center p-4 font-sans text-ink">
-        <div className="max-w-xl w-full bg-white rounded-xl shadow-card border border-ink-light p-10 text-center">
-          <h2 className="font-serif text-3xl font-bold mb-8 text-ink">Kết Quả</h2>
+      <div className="h-screen flex flex-col items-center justify-center p-6 font-sans text-ink relative">
+        <div className="max-w-xl w-full classic-card p-10 text-center m-2 shadow-woodblock relative z-10">
+          <div className="flex justify-center mb-6 text-crimson space-x-2">
+            <span className="text-2xl opacity-80">❖</span>
+          </div>
+          <h2 className="font-serif text-3xl font-bold mb-8 text-ink">Kết Quả Binh Tình</h2>
           
-          <div className="flex justify-center flex-wrap gap-6 mb-8">
-             <div className="bg-[#F0EDE4] border border-ink-light rounded-lg p-6 min-w-[120px]">
-              <div className="text-[10px] uppercase opacity-60 text-emerald-700 font-bold mb-2 tracking-widest">Đúng</div>
-              <div className="text-4xl font-bold text-ink">{score}</div>
+          <div className="flex justify-center flex-wrap gap-8 mb-10">
+             <div className="border-[1.5px] border-ink bg-[#FDFBF7] rounded-sm p-6 min-w-[120px] shadow-[3px_3px_0_0_#2B593F]">
+              <div className="font-serif text-[10px] uppercase opacity-80 text-moss font-bold mb-2 tracking-widest">Đúng</div>
+              <div className="font-serif text-5xl font-bold text-ink">{score}</div>
             </div>
-            <div className="bg-[#F0EDE4] border border-ink-light rounded-lg p-6 min-w-[120px]">
-              <div className="text-[10px] uppercase opacity-60 text-rose-700 font-bold mb-2 tracking-widest">Sai</div>
-              <div className="text-4xl font-bold text-ink">{wrongCount}</div>
+            <div className="border-[1.5px] border-ink bg-[#FDFBF7] rounded-sm p-6 min-w-[120px] shadow-[3px_3px_0_0_#8C2111]">
+              <div className="font-serif text-[10px] uppercase opacity-80 text-crimson font-bold mb-2 tracking-widest">Sai</div>
+              <div className="font-serif text-5xl font-bold text-ink">{wrongCount}</div>
             </div>
           </div>
           
-          <p className="text-ink/80 mb-8 italic">
-            Bạn đã hoàn thành bài thi với kết quả {score}/{selectedQuestions.length} câu chính xác.
+          <p className="text-ink/80 mb-10 font-serif italic">
+            Bạn đã hoàn thành với kết quả {score}/{selectedQuestions.length} câu chính xác.
           </p>
 
           <button
             onClick={startGame}
-            className="flex items-center justify-center space-x-2 w-full sm:w-auto mx-auto bg-olive hover:opacity-90 text-white font-semibold py-3 px-8 rounded transition-opacity uppercase tracking-widest text-sm"
+            className="flex items-center justify-center space-x-2 w-full sm:w-auto mx-auto bg-ink text-paper font-semibold py-3 px-8 border border-ink hover:bg-ink/90 shadow-[2px_2px_0_0_#8C2111] transition-all uppercase tracking-widest text-sm"
           >
             <RotateCcw className="w-4 h-4" />
             <span>Chơi Lại</span>
@@ -272,41 +279,41 @@ export default function App() {
   const currentWrongCount = answeredCount - score;
 
   return (
-    <div className="h-screen w-full flex flex-col bg-paper font-sans text-ink">
+    <div className="h-screen w-full flex flex-col font-sans text-ink relative">
       {/* Header */}
-      <header className="h-20 bg-ink text-white flex items-center justify-between px-6 sm:px-10 flex-shrink-0">
+      <header className="h-20 bg-ink text-paper border-b-[4px] border-crimson flex items-center justify-between px-6 sm:px-10 flex-shrink-0 z-10">
         <div>
-          <h1 className="font-serif text-lg sm:text-2xl">Văn tế Nghĩa sĩ Cần Giuộc</h1>
-          <p className="text-[10px] sm:text-xs tracking-widest opacity-70 uppercase mt-1">Nguyễn Đình Chiểu • 1861</p>
+          <h1 className="font-serif text-lg sm:text-2xl text-paper">Văn tế Nghĩa sĩ Cần Giuộc</h1>
+          <p className="font-serif text-[10px] sm:text-xs tracking-widest opacity-70 uppercase mt-1">Nguyễn Đình Chiểu • 1861</p>
         </div>
         <div className="flex gap-4 sm:gap-8 items-center">
-          <div className="text-right hidden sm:block">
+          <div className="text-right hidden sm:block mt-1">
             <p className="text-[10px] uppercase opacity-60 font-medium">Tiến độ</p>
-            <p className="font-semibold text-sm">Câu {currentIndex + 1} / {selectedQuestions.length}</p>
+            <p className="font-semibold text-sm font-serif">Câu {currentIndex + 1} / {selectedQuestions.length}</p>
           </div>
-          <div className="w-[1px] h-8 bg-white/20 hidden sm:block"></div>
-          <div className="flex gap-4">
+          <div className="w-[1px] h-8 bg-paper/20 hidden sm:block"></div>
+          <div className="flex gap-4 mt-1">
             <div className="text-center">
-              <p className="text-[10px] uppercase opacity-60 text-emerald-400 font-medium tracking-widest">Đúng</p>
-              <p className="font-bold text-sm tracking-widest">{score.toString().padStart(2, '0')}</p>
+              <p className="font-serif text-[10px] uppercase opacity-80 text-[#A3B18A] font-bold tracking-widest">Đúng</p>
+              <p className="font-bold text-sm tracking-widest font-serif">{score.toString().padStart(2, '0')}</p>
             </div>
-            <div className="text-center text-rose-400">
-              <p className="text-[10px] uppercase opacity-60 text-rose-400 font-medium tracking-widest">Sai</p>
-              <p className="font-bold text-sm tracking-widest">{currentWrongCount.toString().padStart(2, '0')}</p>
+            <div className="text-center text-[#E07A5F]">
+              <p className="font-serif text-[10px] uppercase opacity-80 text-[#E07A5F] font-bold tracking-widest">Sai</p>
+              <p className="font-bold text-sm tracking-widest font-serif">{currentWrongCount.toString().padStart(2, '0')}</p>
             </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col lg:grid lg:grid-cols-12 overflow-hidden h-full">
+      <main className="flex-grow flex flex-col lg:grid lg:grid-cols-12 overflow-hidden h-full z-0 relative">
         {/* Left Col: Question and Options */}
         <section className="lg:col-span-8 p-6 sm:p-10 flex flex-col overflow-y-auto">
           <div className="mb-8 flex-shrink-0">
-            <span className="text-[11px] font-bold uppercase tracking-widest text-olive bg-[#F0EDE4] px-3 py-1 rounded">
+            <span className="font-serif text-[11px] font-bold uppercase tracking-widest text-paper bg-ink px-3 py-1 rounded-sm shadow-woodblock">
               Câu hỏi {currentIndex + 1}
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-ink mt-6 leading-snug">
+            <h2 className="font-serif text-2xl sm:text-3xl text-ink mt-8 leading-snug">
               {currentQ.question}
             </h2>
           </div>
@@ -316,23 +323,23 @@ export default function App() {
               const isSelected = selectedOption === option;
               const isCorrect = option === currentQ.correctAnswer;
               
-              let buttonStyles = "border border-ink hover:border-olive/40 hover:bg-white text-ink/80";
-              let letterStyles = "border border-ink font-bold text-ink/40";
+              let buttonStyles = "border border-ink-light bg-[#FDFBF7] hover:border-ink hover:bg-ink/5 text-ink/80 rounded-sm";
+              let letterStyles = "border-2 border-crimson/30 text-crimson/50 font-serif font-bold rounded-sm";
 
               if (isAnswered) {
                 if (isCorrect) {
-                  buttonStyles = "border-2 border-emerald-600 bg-emerald-50 text-ink";
-                  letterStyles = "border-emerald-600 text-emerald-700";
+                  buttonStyles = "border-2 border-moss bg-moss/5 text-ink rounded-sm shadow-[2px_2px_0_0_#2B593F]";
+                  letterStyles = "border-2 border-moss text-moss font-serif font-bold rounded-sm";
                 } else if (isSelected) {
-                  buttonStyles = "border-2 border-rose-600 bg-rose-50 text-ink";
-                  letterStyles = "border-rose-600 text-rose-700";
+                  buttonStyles = "border-2 border-crimson bg-crimson/5 text-ink rounded-sm shadow-[2px_2px_0_0_#8C2111]";
+                  letterStyles = "border-2 border-crimson text-crimson font-serif font-bold rounded-sm";
                 } else {
-                  buttonStyles = "border border-ink-light opacity-50 bg-transparent text-ink/50";
-                  letterStyles = "border-ink-light text-ink/30";
+                  buttonStyles = "border border-ink-light opacity-60 bg-transparent text-ink/50 rounded-sm";
+                  letterStyles = "border-2 border-ink-light text-ink/30 font-serif font-bold rounded-sm";
                 }
               } else if (isSelected) {
-                 buttonStyles = "border-2 border-olive bg-olive/5 text-ink";
-                 letterStyles = "border-olive text-olive";
+                 buttonStyles = "border-2 border-ink bg-ink/5 text-ink outline outline-1 outline-offset-2 outline-ink/20 rounded-sm";
+                 letterStyles = "border-2 border-ink text-ink font-serif font-bold rounded-sm";
               }
 
               const letters = ['A', 'B', 'C', 'D'];
@@ -342,20 +349,20 @@ export default function App() {
                   key={idx}
                   onClick={() => handleSelect(option)}
                   disabled={isAnswered}
-                  className={`w-full text-left p-4 sm:p-5 rounded-lg flex items-center transition-all ${buttonStyles}`}
+                  className={`w-full text-left p-4 sm:p-5 flex items-center transition-all ${buttonStyles}`}
                 >
-                  <div className={`w-8 h-8 rounded-full flex flex-shrink-0 items-center justify-center mr-4 text-sm ${letterStyles}`}>
+                  <div className={`w-8 h-8 flex flex-shrink-0 items-center justify-center mr-4 text-sm bg-transparent ${letterStyles}`}>
                     {letters[idx]}
                   </div>
                   <span className="text-[15px] sm:text-lg font-medium">{option}</span>
                   {isAnswered && isCorrect && (
                     <div className="ml-auto flex-shrink-0 pl-2">
-                       <Check className="w-6 h-6 text-emerald-600" />
+                       <Check className="w-6 h-6 text-moss" />
                     </div>
                   )}
                   {isAnswered && isSelected && !isCorrect && (
                     <div className="ml-auto flex-shrink-0 pl-2">
-                       <X className="w-6 h-6 text-rose-600" />
+                       <X className="w-6 h-6 text-crimson" />
                     </div>
                   )}
                 </button>
@@ -365,14 +372,14 @@ export default function App() {
           
           <div className="mt-8 flex justify-between items-center hidden lg:flex flex-shrink-0">
              {!isAnswered ? (
-               <p className="italic text-sm text-ink/60">Chọn một đáp án để xem giải thích chi tiết.</p>
+               <p className="italic text-sm text-ink/60 font-serif">Chọn một đáp án để xem giải thích chi tiết.</p>
              ) : (
                 <div />
              )}
             {isAnswered && (
                <button
                  onClick={nextQuestion}
-                 className="bg-olive text-white px-8 py-3 rounded font-semibold text-sm hover:opacity-90 uppercase tracking-widest ml-auto transition-opacity flex items-center space-x-2"
+                 className="bg-ink text-paper border border-ink hover:bg-ink/90 px-8 py-3 rounded-sm font-bold text-sm uppercase tracking-widest shadow-[2px_2px_0_0_#8C2111] ml-auto transition-all flex items-center space-x-2"
                >
                  <span>{currentIndex + 1 === selectedQuestions.length ? 'Xem Kết Quả' : 'Câu tiếp theo'}</span>
                  <ArrowRight className="w-4 h-4" />
@@ -382,34 +389,34 @@ export default function App() {
         </section>
 
         {/* Right Col: Explanation */}
-        <aside className="lg:col-span-4 bg-[#F0EDE4] lg:border-l border-ink-light p-6 sm:p-8 flex flex-col flex-shrink-0 overflow-y-auto">
+        <aside className={`lg:col-span-4 bg-[#F0EDE4] lg:border-l-[1.5px] border-ink p-4 lg:p-8 flex-col flex-shrink-0 overflow-y-auto ${!isAnswered ? 'hidden lg:flex' : 'flex'}`}>
           {isAnswered ? (
-            <div className="bg-white border text-ink border-ink-light p-6 rounded shadow-card mb-6 animate-in fade-in slide-in-from-right-4 duration-300">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-olive mb-4 flex items-center">
+            <div className="bg-[#FDFBF7] border-[1.5px] text-ink border-ink p-4 lg:p-6 rounded-sm shadow-woodblock mb-4 lg:mb-6 animate-in fade-in slide-in-from-right-4 duration-300">
+              <h3 className={`font-serif text-[10px] lg:text-xs font-bold uppercase tracking-widest mb-2 lg:mb-4 flex items-center ${selectedOption === currentQ.correctAnswer ? 'text-moss' : 'text-crimson'}`}>
                 {selectedOption === currentQ.correctAnswer ? (
-                  <><Check className="w-4 h-4 mr-2" /> Trả lời đúng</>
+                  <><Check className="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" /> Trả lời đúng</>
                 ) : (
-                  <><X className="w-4 h-4 mr-2" /> Chưa chính xác</>
+                  <><X className="w-3.5 h-3.5 lg:w-4 lg:h-4 mr-1.5 lg:mr-2" /> Chưa chính xác</>
                 )}
               </h3>
-              <p className="text-sm leading-relaxed text-ink/80 mb-4">
+              <p className="text-[13px] lg:text-sm leading-relaxed text-ink/90 font-medium">
                 {currentQ.explanation}
               </p>
             </div>
           ) : (
             <div className="flex-1 flex flex-col items-center justify-center text-center opacity-40 py-10 lg:py-0">
-               <div className="w-16 h-16 border-2 border-dashed border-ink rounded-full mb-4 flex items-center justify-center opacity-20">
-                  <span className="font-serif text-2xl font-bold">?</span>
+               <div className="w-16 h-16 border-2 border-dashed border-ink rounded-full mb-4 flex items-center justify-center opacity-30">
+                  <span className="font-serif text-3xl font-bold">印</span>
                </div>
-               <p className="text-sm italic">Giải thích sẽ hiện ra sau khi bạn chọn đáp án.</p>
+               <p className="text-sm italic font-serif">Giải thích sẽ hiện ra sau khi chọn đáp án.</p>
             </div>
           )}
 
           {/* Ghi chú */}
           <div className="mt-auto hidden lg:block">
-            <div className="bg-white/50 p-4 rounded-lg border border-white">
+            <div className="bg-[#E6E1D6] p-5 rounded-sm border border-ink shadow-[2px_2px_0_0_#3D3935]">
               <h4 className="font-serif text-sm font-bold mb-2">Ghi chú lịch sử</h4>
-              <p className="text-[13px] leading-relaxed text-ink/70">
+              <p className="text-[13px] leading-relaxed text-ink/80 font-medium">
                 Trận Cần Giuộc diễn ra đêm rằm tháng 11 năm Tân Dậu (16-12-1861). Các nghĩa sĩ đã tiêu diệt được một số quân Pháp và làm chủ đồn trong một thời gian ngắn.
               </p>
             </div>
@@ -419,7 +426,7 @@ export default function App() {
           {isAnswered && (
              <button
                onClick={nextQuestion}
-               className="bg-olive text-white px-8 py-3 rounded font-semibold text-sm hover:opacity-90 uppercase tracking-widest mt-6 lg:hidden w-full flex justify-center items-center space-x-2"
+               className="bg-ink text-paper border border-ink hover:bg-ink/90 px-6 py-3 rounded-sm font-bold text-sm uppercase tracking-widest shadow-[2px_2px_0_0_#8C2111] mt-6 lg:hidden w-full flex justify-center items-center space-x-2 transition-all"
              >
                <span>{currentIndex + 1 === selectedQuestions.length ? 'Xem Kết Quả' : 'Câu tiếp theo'}</span>
                <ArrowRight className="w-4 h-4" />
@@ -429,12 +436,12 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="h-12 bg-white border-t border-ink-light flex items-center px-6 sm:px-10 flex-shrink-0 hidden sm:flex">
+      <footer className="h-12 border-t-[1.5px] bg-[#FDFBF7] border-ink flex items-center px-6 sm:px-10 flex-shrink-0 hidden sm:flex z-10 relative">
         <div className="flex items-center gap-4">
-          <div className="h-2 w-32 sm:w-48 bg-[#E2DDD3] rounded-full overflow-hidden">
-             <div className="h-full bg-olive transition-all duration-500" style={{ width: `${((currentIndex + (isAnswered ? 1 : 0)) / selectedQuestions.length) * 100}%` }}></div>
+          <div className="h-1.5 w-32 sm:w-48 bg-ink/10 rounded-sm overflow-hidden outline outline-1 outline-ink/20">
+             <div className="h-full bg-crimson transition-all duration-500" style={{ width: `${((currentIndex + (isAnswered ? 1 : 0)) / selectedQuestions.length) * 100}%` }}></div>
           </div>
-          <span className="text-[11px] font-bold text-ink/50 uppercase tracking-widest hidden sm:inline">
+          <span className="font-serif text-[10px] font-bold text-ink/60 uppercase tracking-widest hidden sm:inline">
             Hoàn thành {Math.round(((currentIndex + (isAnswered ? 1 : 0)) / selectedQuestions.length) * 100)}%
           </span>
         </div>
